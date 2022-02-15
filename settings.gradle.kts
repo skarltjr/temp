@@ -1,7 +1,6 @@
 rootProject.name = "temp"
-include("app")
 include(
-    "user-api",
+    "app",
     "user-api:user-domain",
     "user-api:user-presentation"
 )

@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     id("org.springframework.boot") version "2.4.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -58,4 +60,7 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+}
+tasks.withType<BootJar> {
+    mainClass.set("org.example.app.AppApplicationKt")
 }
