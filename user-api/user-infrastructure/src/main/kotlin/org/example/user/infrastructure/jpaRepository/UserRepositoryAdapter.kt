@@ -10,6 +10,8 @@ class UserRepositoryAdapter(
 ) : UserRepository {
     // 제 3자에게 어떤 레포지토리를 사용할지 책임을 위임
     // IoC
+    // userRepository 구현체로 지금은 jpaRepository를 주입받아활용
+    // userRepository인터페이스가 사용될 때 의존관계 자동주입으로 userRepository에 이 UserRepositoryAdapter가 주입된다
 
 
     override fun save(user: User): User {

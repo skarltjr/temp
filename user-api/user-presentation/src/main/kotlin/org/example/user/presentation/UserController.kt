@@ -16,6 +16,6 @@ class UserController(
 
     @PostMapping
     fun createUser(@RequestBody @Valid form: SignUpForm) {
-
+        userService.save(form.name,form.password)
     }
 }
