@@ -8,6 +8,7 @@ plugins{
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(project(":user-api:user-domain"))
     implementation(project(":user-api:user-presentation"))
     implementation(project(":goal-api:goal-presentation"))
