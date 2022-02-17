@@ -13,8 +13,7 @@ class SignUpForm(
     fun toCommand(): CreateUserCommand {
         return CreateUserCommand(
             name = this.name,
-            password = this.password,
-            createdAt = LocalDateTime.now()
+            password = this.password
         )
     }
 }

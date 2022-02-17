@@ -15,7 +15,7 @@ class UserController(
 ) {
 
     @PostMapping
-    fun createUser(@RequestBody @Valid form: SignUpForm) {
-        userService.save(form)
+    fun createUser(@RequestBody @Valid request: SignUpForm) {
+        userService.save(request)
     }
 }
