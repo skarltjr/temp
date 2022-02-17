@@ -16,7 +16,9 @@ class User(
     val password: String,
     val createdAt: LocalDateTime
 ) : AbstractAggregateRoot() {
-    constructor(name: String, password: String) : this(userId =null,name = name, password = password, LocalDateTime.now()) {
+    constructor(name: String, password: String,createdAt:LocalDateTime) : this(userId =null,name = name,
+        password = password,createdAt = createdAt) {
+        // 생성자 변경해야할듯 event등록위해
         registerEvent(UserCreatedEvent(this))
     }
 }
