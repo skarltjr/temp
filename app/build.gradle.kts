@@ -10,8 +10,16 @@ plugins{
 dependencies {
     implementation(project(":common"))
     implementation(project(":user-api:user-domain"))
+    implementation(project(":user-api:user-application"))
     implementation(project(":user-api:user-presentation"))
+    implementation(project(":user-api:user-infrastructure"))
+
+    implementation(project(":goal-api:goal-domain"))
+    implementation(project(":goal-api:goal-application"))
     implementation(project(":goal-api:goal-presentation"))
+    implementation(project(":goal-api:goal-infrastructure"))
+
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")

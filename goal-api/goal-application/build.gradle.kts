@@ -12,9 +12,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":goal-api:goal-application"))
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation(project(":goal-api:goal-domain"))
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 }
 tasks.withType<BootJar>{
     enabled = false
