@@ -1,4 +1,4 @@
-package org.example.goal
+package org.example.goal.presentation
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController

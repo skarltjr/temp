@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation(project(":user-api:user-domain"))
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 tasks.withType<BootJar>{
