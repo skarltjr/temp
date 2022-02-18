@@ -2,10 +2,8 @@ package org.example.user.presentation
 
 import org.example.user.application.UserService
 import org.example.user.application.request.SignUpForm
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.example.user.application.request.UserInfo
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -17,5 +15,10 @@ class UserController(
     @PostMapping
     fun createUser(@RequestBody @Valid request: SignUpForm) {
         userService.save(request)
+    }
+
+    @DeleteMapping
+    fun deleteUser(@RequestBody @Valid userInfo: UserInfo) {
+        userService.delete(userInfo)
     }
 }

@@ -3,9 +3,9 @@ package org.example.user.domain.handler
 import org.example.user.domain.User
 import org.example.user.domain.UserRepository
 import org.example.user.domain.commands.CreateUserCommand
+import org.example.user.domain.commands.DeleteUserCommand
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
-import java.time.LocalDateTime
 
 @Component
 class UserCommandHandler(
@@ -18,12 +18,17 @@ class UserCommandHandler(
     //command를 통해 핸들러에서 처리할 때 우리가 "무엇을" 처리해야하는지 명확히 알 수 있다
     fun save(command:CreateUserCommand) {
         val user = User(
-            userId = null,
             name = command.name,
-            password = command.password,
-            createdAt = LocalDateTime.now()
+            password = command.password
         )
         userRepository.save(user)
+    }
+
+    fun delete(command: DeleteUserCommand) {
+        val userName = command.name
+        val user = userRepository.findByName(userName) // null 예외처리 추가
+        user!!.deleteUser()
         user.pollAllEvent().forEach(publisher::publishEvent)
+        userRepository.delete(user!!)
     }
 }

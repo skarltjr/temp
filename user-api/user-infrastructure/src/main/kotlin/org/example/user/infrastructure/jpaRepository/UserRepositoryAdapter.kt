@@ -17,4 +17,12 @@ class UserRepositoryAdapter(
     override fun save(user: User): User {
         return jpaUserRepository.save(user)
     }
+
+    override fun findByName(userName: String): User? {
+        return jpaUserRepository.findByName(userName)
+    }
+
+    override fun delete(user: User) {
+        return jpaUserRepository.delete(user)
+    }
 }

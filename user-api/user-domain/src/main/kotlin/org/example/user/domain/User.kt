@@ -1,13 +1,15 @@
 package org.example.user.domain
 
 import org.example.common.AbstractAggregateRoot
-import org.example.user.domain.event.UserCreatedEvent
+import org.example.user.domain.event.DeleteGoalEvent
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.Table
 
 @Entity
+@Table(name = "user_api_user")
 class User(
     @field:Id
     @field:GeneratedValue
@@ -16,9 +18,14 @@ class User(
     val password: String,
     val createdAt: LocalDateTime
 ) : AbstractAggregateRoot() {
-    constructor(name: String, password: String,createdAt:LocalDateTime) : this(userId =null,name = name,
-        password = password,createdAt = createdAt) {
-        // 생성자 변경해야할듯 event등록위해
-        registerEvent(UserCreatedEvent(this))
+    constructor(name: String, password: String) : this(
+        userId = null,
+        name = name,
+        password = password,
+        createdAt = LocalDateTime.now()
+    )
+
+    fun deleteUser() {
+        registerEvent(DeleteGoalEvent(this.name))
     }
 }

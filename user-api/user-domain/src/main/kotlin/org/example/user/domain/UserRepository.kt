@@ -1,8 +1,9 @@
 package org.example.user.domain
 
-import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository{
 
     fun save(user:User):User
+    fun findByName(userName: String):User?
+    fun delete(user: User)
 }

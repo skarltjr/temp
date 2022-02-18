@@ -1,12 +1,22 @@
 package org.example.goal.presentation
 
-import org.springframework.web.bind.annotation.GetMapping
+
+import org.example.goal.application.GoalService
+import org.example.goal.application.request.CreateGoalRequest
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
-class GoalController {
-    @GetMapping("/goal")
-    fun exampleGaol(): String {
-        return "goal"
+@RequestMapping("/goal")
+class GoalController(
+    private val goalService: GoalService
+) {
+
+    @PostMapping
+    fun createGoal(@RequestBody @Valid request: CreateGoalRequest) {
+        goalService.save(request)
     }
 }
