@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class GoalEventHandler() {
 
     @EventListener
-    fun deleteGoal(event: DeleteGoalEvent) {
-
+    fun handleDeleteGoalEvent(event: DeleteGoalEvent) {
+        println("hello")
     }
 }
