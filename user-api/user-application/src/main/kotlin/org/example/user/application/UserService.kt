@@ -17,6 +17,7 @@ class UserService(
         userCommandHandler.save(form.toCommand())
     }
 
+    @Transactional
     fun delete(userName: UserInfo) {
         userCommandHandler.delete(userName.toCommand())
     }

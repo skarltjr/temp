@@ -7,6 +7,7 @@ import org.example.user.domain.commands.DeleteUserCommand
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Component
 
+
 @Component
 class UserCommandHandler(
     private val userRepository: UserRepository,
@@ -29,6 +30,9 @@ class UserCommandHandler(
         val user = userRepository.findByName(userName) // null 예외처리 추가
         user!!.deleteUser()
         user.pollAllEvent().forEach(publisher::publishEvent)
+
+        //여기서 이벤트를 던진 후 문제가 생기면??? -> 확인해보니 트랜잭션 보장이 됐다.
+        //지금은 같은 데이터베이스를 사용해서 하나의 트랜잭션으로 관리되는
         userRepository.delete(user!!)
     }
 }
