@@ -14,6 +14,10 @@ class UserService(
 ){
     @Transactional
     fun save(form: SignUpForm) {
+        // 1. 각 crud와 같은 행위는 command로 다룬다
+        // 이를위해 request -> command
+        // 2.service는 화합의 공간으로 사용
+        // 도메인 모듈로 책임을 위임 - 이를위한 도메인의 commandHandler
         userCommandHandler.save(form.toCommand())
     }
 
