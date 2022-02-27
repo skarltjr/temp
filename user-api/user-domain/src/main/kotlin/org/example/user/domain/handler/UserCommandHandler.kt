@@ -1,6 +1,6 @@
 package org.example.user.domain.handler
 
-import org.example.user.domain.User
+import org.example.user.domain.model.User
 import org.example.user.domain.UserRepository
 import org.example.user.domain.commands.CreateUserCommand
 import org.example.user.domain.commands.DeleteUserCommand
@@ -22,7 +22,9 @@ class UserCommandHandler(
             name = command.name,
             password = command.password
         )
-        userRepository.save(user)
+        val savedUser = userRepository.save(user)
+        savedUser.registerCreateUserQueryEvent()
+        user.pollAllEvent().forEach(publisher::publishEvent)
     }
 
     fun delete(command: DeleteUserCommand) {

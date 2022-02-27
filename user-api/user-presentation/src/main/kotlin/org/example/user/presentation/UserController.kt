@@ -3,6 +3,7 @@ package org.example.user.presentation
 import org.example.user.application.UserService
 import org.example.user.application.request.SignUpForm
 import org.example.user.application.request.UserInfo
+import org.example.user.application.response.GetUser
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
@@ -17,6 +18,10 @@ class UserController(
         userService.save(request)
     }
 
+    @GetMapping("/{userId}")
+    fun getUser(@PathVariable userId: Long):GetUser{
+        return userService.getUser(userId)
+    }
     @DeleteMapping
     fun deleteUser(@RequestBody @Valid userInfo: UserInfo) {
         userService.delete(userInfo)

@@ -2,7 +2,9 @@ package org.example.user.application
 
 import org.example.user.application.request.SignUpForm
 import org.example.user.application.request.UserInfo
+import org.example.user.application.response.GetUser
 import org.example.user.domain.handler.UserCommandHandler
+import org.example.user.domain.processor.UserQueryProcessor
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -10,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserService(
-    private val userCommandHandler: UserCommandHandler
+    private val userCommandHandler: UserCommandHandler,
+    private val userQueryProcessor: UserQueryProcessor
 ){
     @Transactional
     fun save(form: SignUpForm) {
@@ -24,5 +27,14 @@ class UserService(
     @Transactional
     fun delete(userName: UserInfo) {
         userCommandHandler.delete(userName.toCommand())
+    }
+
+    fun getUser(userId: Long): GetUser {
+        val userQuery = userQueryProcessor.findByUserId(userId)
+        return GetUser(
+            userId = userQuery.userId,
+            name = userQuery.name,
+            createdAt = userQuery.createdAt
+        )
     }
 }

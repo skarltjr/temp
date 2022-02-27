@@ -1,6 +1,7 @@
-package org.example.user.domain
+package org.example.user.domain.model
 
 import org.example.common.AbstractAggregateRoot
+import org.example.user.domain.event.CreateUserQueryEvent
 import org.example.user.domain.event.DeleteGoalEvent
 import java.time.LocalDateTime
 import javax.persistence.Entity
@@ -24,6 +25,13 @@ class User(
         password = password,
         createdAt = LocalDateTime.now()
     )
+    fun registerCreateUserQueryEvent() {
+        registerEvent(CreateUserQueryEvent(
+            userId = this.userId!!,
+            username = this.name,
+            createdAt = this.createdAt
+        ))
+    }
 
     fun deleteUser() {
         registerEvent(DeleteGoalEvent(this.name))

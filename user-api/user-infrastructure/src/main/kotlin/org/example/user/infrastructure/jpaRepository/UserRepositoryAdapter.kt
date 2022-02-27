@@ -1,6 +1,6 @@
 package org.example.user.infrastructure.jpaRepository
 
-import org.example.user.domain.User
+import org.example.user.domain.model.User
 import org.example.user.domain.UserRepository
 import org.springframework.stereotype.Component
 

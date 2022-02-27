@@ -1,11 +1,10 @@
 package org.example.user.infrastructure.jpaRepository
 
-import org.example.user.domain.model.User
+import org.example.user.domain.model.UserQuery
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface JpaUserRepository : JpaRepository<User, Long> {
-    fun findByName(userName: String): User?
-
+interface JpaUserQueryRepository:JpaRepository<UserQuery,Long>{
+    fun findByName(name: String): UserQuery
 }
