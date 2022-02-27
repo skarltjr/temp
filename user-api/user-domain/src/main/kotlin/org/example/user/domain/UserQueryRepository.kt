@@ -6,4 +6,5 @@ interface UserQueryRepository {
     fun findByName(name:String):UserQuery
     fun save(userQuery: UserQuery):UserQuery
     fun findById(userId: Long): UserQuery
+    fun deleteById(userId: Long)
 }

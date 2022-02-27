@@ -21,4 +21,8 @@ class UserQueryRepositoryAdapter(
     override fun findById(userId: Long): UserQuery {
         return jpaUserQueryRepository.findByIdOrNull(userId)?: throw RuntimeException()
     }
+
+    override fun deleteById(userId: Long) {
+        jpaUserQueryRepository.deleteById(userId)
+    }
 }

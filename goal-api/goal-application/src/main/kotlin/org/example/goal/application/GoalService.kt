@@ -1,7 +1,7 @@
 package org.example.goal.application
 
 import org.example.goal.application.request.CreateGoalRequest
-import org.example.goal.domain.handler.GoalCommandHandler
+import org.example.goal.domain.commandHandler.GoalCommandHandler
 import org.springframework.stereotype.Service
 
 @Service

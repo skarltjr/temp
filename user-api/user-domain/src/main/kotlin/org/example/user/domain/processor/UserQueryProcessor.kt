@@ -3,6 +3,7 @@ package org.example.user.domain.processor
 import org.example.user.domain.UserQueryRepository
 import org.example.user.domain.UserRepository
 import org.example.user.domain.event.CreateUserQueryEvent
+import org.example.user.domain.event.DeleteUserQueryEvent
 import org.example.user.domain.model.UserQuery
 import org.springframework.stereotype.Component
 
@@ -21,6 +22,10 @@ class UserQueryProcessor(
 
     fun findByUserId(userId: Long):UserQuery {
         return userQueryRepository.findById(userId)
+    }
+
+    fun deleteUserQuery(event: DeleteUserQueryEvent) {
+        userQueryRepository.deleteById(event.userId)
     }
 
 }

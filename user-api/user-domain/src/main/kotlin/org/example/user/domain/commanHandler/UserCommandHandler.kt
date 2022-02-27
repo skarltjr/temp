@@ -1,4 +1,4 @@
-package org.example.user.domain.handler
+package org.example.user.domain.commanHandler
 
 import org.example.user.domain.model.User
 import org.example.user.domain.UserRepository
@@ -31,6 +31,7 @@ class UserCommandHandler(
         val userName = command.name
         val user = userRepository.findByName(userName) // null 예외처리 추가
         user!!.deleteUser()
+        user.deleteUserQuery()
         user.pollAllEvent().forEach(publisher::publishEvent)
 
         //여기서 이벤트를 던진 후 문제가 생기면??? -> 확인해보니 트랜잭션 보장이 됐다.
