@@ -36,9 +36,6 @@ class User(
 
     fun deleteUser() {
         registerEvent(DeleteGoalEvent(this.name))
-    }
-
-    fun deleteUserQuery() {
         registerEvent(DeleteUserQueryEvent(this.userId!!))
     }
 }
