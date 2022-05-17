@@ -22,4 +22,5 @@ class Goal(
     enum class GoalType {
         MONEY,HONOR,FREE
     }
+    // test
 }
